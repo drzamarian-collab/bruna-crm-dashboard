@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXTAUTH_URL": "https://crm.walterzamarianjr.com",
+    "NEXTAUTH_SECRET": "aT0omadfWqRv1hJN0F1suOTBGP3GWr3KROyQOvlrGUQ=",
+    "ADMIN_EMAIL": "drzamarian@gmail.com",
+    "ADMIN_PASSWORD_HASH": "$2b$10$39Os7QLZaXJdYV4PuTPpw.SU65pqUjvjQRSvLwMc3cz6zLCuYOz6O",
+    "CRM_API_URL": "https://xdvf43bgtiym34uqunyjw2e4ci0jmkfz.lambda-url.us-east-1.on.aws"
+  }
+}

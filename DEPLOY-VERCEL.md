@@ -2,7 +2,7 @@
 
 **Data:** 17/10/2025
 **Repositório GitHub:** https://github.com/drzamarian-collab/bruna-crm-dashboard
-**Domínio Final:** https://crm.walterzamarian.com.br
+**Domínio Final:** https://crm.walterzamarianjr.com
 
 ---
 
@@ -33,9 +33,9 @@
 
 No painel de configuração do projeto Vercel, adicione as seguintes variáveis:
 
-#### Production (crm.walterzamarian.com.br)
+#### Production (crm.walterzamarianjr.com)
 ```env
-NEXTAUTH_URL=https://crm.walterzamarian.com.br
+NEXTAUTH_URL=https://crm.walterzamarianjr.com
 NEXTAUTH_SECRET=aT0omadfWqRv1hJN0F1suOTBGP3GWr3KROyQOvlrGUQ=
 ADMIN_EMAIL=drzamarian@gmail.com
 ADMIN_PASSWORD_HASH=$2b$10$39Os7QLZaXJdYV4PuTPpw.SU65pqUjvjQRSvLwMc3cz6zLCuYOz6O
@@ -87,7 +87,7 @@ Após deploy completo, a Vercel fornecerá uma URL temporária:
 ### 4.1 Adicionar Domínio no Vercel
 1. Acesse: **Settings → Domains**
 2. Clique em **"Add Domain"**
-3. Digite: `crm.walterzamarian.com.br`
+3. Digite: `crm.walterzamarianjr.com`
 4. Clique em **"Add"**
 
 ### 4.2 Configurar DNS no Route53
@@ -120,7 +120,7 @@ aws route53 change-resource-record-sets \
     "Changes": [{
       "Action": "CREATE",
       "ResourceRecordSet": {
-        "Name": "crm.walterzamarian.com.br",
+        "Name": "crm.walterzamarianjr.com",
         "Type": "CNAME",
         "TTL": 300,
         "ResourceRecords": [{"Value": "cname.vercel-dns.com"}]
@@ -131,13 +131,13 @@ aws route53 change-resource-record-sets \
 
 ### 4.4 Aguardar Propagação DNS
 - **Tempo estimado:** 5-30 minutos
-- **Verificar:** `nslookup crm.walterzamarian.com.br`
+- **Verificar:** `nslookup crm.walterzamarianjr.com`
 - **Status Vercel:** Aguardar "Valid Configuration" em Domains
 
 ### 4.5 Atualizar NEXTAUTH_URL (IMPORTANTE!)
 Após DNS propagado:
 1. Acesse **Settings → Environment Variables**
-2. Edite `NEXTAUTH_URL` para: `https://crm.walterzamarian.com.br`
+2. Edite `NEXTAUTH_URL` para: `https://crm.walterzamarianjr.com`
 3. Clique em **"Save"**
 4. **Redeploy** o projeto (Deployments → ... → Redeploy)
 
@@ -153,7 +153,7 @@ aws lambda update-function-url-config \
   --function-name bruna-crm-api \
   --cors '{
     "AllowOrigins": [
-      "https://crm.walterzamarian.com.br",
+      "https://crm.walterzamarianjr.com",
       "http://localhost:3000"
     ],
     "AllowMethods": ["GET", "POST"],
@@ -170,7 +170,7 @@ curl https://xdvf43bgtiym34uqunyjw2e4ci0jmkfz.lambda-url.us-east-1.on.aws/metric
 
 # Teste via Dashboard
 curl -H "Cookie: next-auth.session-token=..." \
-  https://crm.walterzamarian.com.br/api/proxy/metrics
+  https://crm.walterzamarianjr.com/api/proxy/metrics
 ```
 
 ---
@@ -214,7 +214,7 @@ aws logs tail /aws/lambda/bruna-crm-api --since 10m --region us-east-1
 **Solução:**
 ```bash
 # Verificar DNS
-dig crm.walterzamarian.com.br
+dig crm.walterzamarianjr.com
 
 # Flush DNS local (macOS)
 sudo dscacheutil -flushcache
@@ -298,7 +298,7 @@ aws dynamodb scan \
 
 - **GitHub:** https://github.com/drzamarian-collab/bruna-crm-dashboard
 - **Vercel Dashboard:** https://vercel.com/dashboard
-- **Production:** https://crm.walterzamarian.com.br
+- **Production:** https://crm.walterzamarianjr.com
 - **Lambda API:** https://xdvf43bgtiym34uqunyjw2e4ci0jmkfz.lambda-url.us-east-1.on.aws
 
 ---

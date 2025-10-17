@@ -11,7 +11,7 @@ Dashboard web completo para gestão do CRM da Clínica Zamarian, integrando dado
 
 Sistema de CRM médico que consolida dados de pacientes provenientes do WhatsApp (via Bruna Agent), apresentando métricas, funil de vendas e gestão de pacientes em interface moderna e responsiva.
 
-**URL Production:** https://crm.walterzamarian.com.br
+**URL Production:** https://crm.walterzamarianjr.com
 
 ## 🚀 Começando
 
@@ -34,7 +34,7 @@ npm run dev
 - [DASHBOARD-SPECS.md](./DASHBOARD-SPECS.md) - Especificações funcionais
 
 ## 🔗 Links
-- **Production:** https://crm.walterzamarian.com.br
+- **Production:** https://crm.walterzamarianjr.com
 - **GitHub:** https://github.com/drzamarian-collab/bruna-crm-dashboard
 
 ---

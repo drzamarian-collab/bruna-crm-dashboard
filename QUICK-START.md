@@ -20,7 +20,7 @@ Cole estas 5 variáveis em **Environment Variables**:
 
 ```
 NEXTAUTH_URL
-https://crm.walterzamarian.com.br
+https://crm.walterzamarianjr.com
 
 NEXTAUTH_SECRET
 aT0omadfWqRv1hJN0F1suOTBGP3GWr3KROyQOvlrGUQ=
@@ -63,7 +63,7 @@ Quando deploy terminar, Vercel mostrará uma URL:
 
 ### No Vercel:
 1. **Settings → Domains**
-2. Digite: `crm.walterzamarian.com.br`
+2. Digite: `crm.walterzamarianjr.com`
 3. Clique **"Add"**
 
 ### DNS Route53:
