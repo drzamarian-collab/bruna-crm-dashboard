@@ -17,7 +17,7 @@ Todas as 9 lambdas AWS criadas e deployadas:
 8. ✅ bruna-crm-follow-up-scheduler
 9. ✅ bruna-crm-crm-api (endpoint principal para o dashboard)
 
-### FASE 6: Dashboard Next.js - 40% Completo
+### FASE 6: Dashboard Next.js - 95% Completo
 
 #### 1. Setup Inicial (✅ 100%)
 - **Projeto criado:** `/Users/walter/projetos/bruna-crm-dashboard/`
@@ -188,7 +188,32 @@ O dashboard consumirá a lambda **bruna-crm-crm-api**:
 | 9 | Páginas | ⏳ | 0% |
 | 10 | Deploy Vercel | ⏳ | 0% |
 
-**Total Geral: 90% Completo** 🎯
+**Total Geral: 95% Completo** 🎯
+
+## 🚀 Sessão Atual (17/10/2025)
+
+### Lambda CRM API - Integração Completa ✅
+1. **Function URL criada:**
+   - URL: `https://xdvf43bgtiym34uqunyjw2e4ci0jmkfz.lambda-url.us-east-1.on.aws`
+   - Auth: NONE (público)
+   - CORS: Habilitado
+
+2. **Endpoints testados e funcionando:**
+   - `/metrics/funnel` ✅ - Funil de vendas (11 estágios)
+   - `/metrics/monthly` ✅ - Métricas mensais agregadas
+   - `/patients` ✅ - Lista de pacientes (1 paciente: Gabriel)
+
+3. **Código Dashboard atualizado:**
+   - `.env.local` ✅ - Lambda URL configurada
+   - `/api/proxy/metrics/route.ts` ✅ - Chamadas paralelas a funnel + monthly
+   - Proxy routes autenticados via NextAuth ✅
+
+4. **Git commit:**
+   - Commit: `a7ce18e`
+   - Mensagem: "feat: Integração com Lambda CRM API"
+   - Arquivos: 4 alterados
+
+**Total Geral: 95% Completo** 🎯
 
 ## 🚀 Comandos para Desenvolvimento
 
