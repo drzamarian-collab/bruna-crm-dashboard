@@ -22,25 +22,48 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Fazer requisição para a Lambda
-    const response = await fetch(`${crmApiUrl}/metrics`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // Fazer requisições paralelas para a Lambda
+    const [funnelResponse, monthlyResponse] = await Promise.all([
+      fetch(`${crmApiUrl}/metrics/funnel`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }),
+      fetch(`${crmApiUrl}/metrics/monthly`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }),
+    ]);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("CRM API error:", errorText);
+    // Verificar erros nas respostas
+    if (!funnelResponse.ok || !monthlyResponse.ok) {
+      const errors = [];
+      if (!funnelResponse.ok) errors.push(`funnel: ${funnelResponse.status}`);
+      if (!monthlyResponse.ok)
+        errors.push(`monthly: ${monthlyResponse.status}`);
+      console.error("CRM API errors:", errors);
       return NextResponse.json(
-        { error: `Erro na Lambda CRM API: ${response.status}` },
-        { status: response.status }
+        { error: `Erro na Lambda CRM API: ${errors.join(", ")}` },
+        { status: 500 }
       );
     }
 
-    const data = await response.json();
-    return NextResponse.json(data);
+    // Combinar dados de ambos endpoints
+    const funnelData = await funnelResponse.json();
+    const monthlyData = await monthlyResponse.json();
+
+    // Formato compatível com o Dashboard
+    const combinedData = {
+      success: funnelData.success && monthlyData.success,
+      overview: monthlyData.data || {},
+      funnel: funnelData.data || [],
+      sources: {
+        instagram: 0,
+        organic: 0,
+      }, // TODO: implementar quando disponível
+      timeline: [], // TODO: implementar quando disponível
+    };
+
+    return NextResponse.json(combinedData);
   } catch (error) {
     console.error("Proxy metrics error:", error);
     return NextResponse.json(
